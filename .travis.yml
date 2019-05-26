@@ -4,7 +4,7 @@ services:
 before_install:
   - docker build -t wynetech/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true wynetech/react-test -react npm run test -- --coverage
+  - docker run -e CI=true wynetech/react-test npm run test -- --coverage
 after_success:
   - docker build -t wynetech/multi-client ./client
   - docker build -t wynetech/multi-nginx ./nginx
