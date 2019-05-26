@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "wynetech/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "wynetech/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "wynetech/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+           "name": "nginx",
+           "image": "wynetech/multi-nginx",
+           "hostname": "nginx",
+           "essential": true,
+           "portMappings": [
+               {
+                   "hostPort": 80,
+                   "containerPort": 80
+               }
+           ],
+           "links": ["client", "server"]
+        }
+    ]
+}
