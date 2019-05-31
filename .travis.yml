@@ -1,0 +1,13 @@
+sudo: required
+service:
+  - docker
+before_install:
+  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
+  - curl https://sdk.cloud.google.com | bash >  /dev/null;
+  - source $HOME/google-cloud-sdk/path.bath.inc
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project core-outrider-242306
+  - gcloud config set compute/zone us-west1-b	
+  - gcloud container cluster get-credentials multi-cluster
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
