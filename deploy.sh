@@ -13,4 +13,4 @@ docker push wynetech/multi-worker:$SHA
 kubectl apply -f k8s
 kubectl set image deployment/server-deployment server=wynetech/multi-server:$SHA
 kubectl set image deployment/client-deployment client=wynetech/multi-client:$SHA
-kubectl set image deployment/worker-deployment woker=wynetech/multi-worker:$SHA
+kubectl set image deployment/worker-deployment worker=wynetech/multi-worker:$SHA
