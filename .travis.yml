@@ -20,7 +20,7 @@ before_install:
   - docker build -t wynetech/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true wynetech/react-test npm test -- --cover
+  - docker run -e CI=true wynetech/react-test npm run test -- --coverage
 
 deploy:
   provider: script
