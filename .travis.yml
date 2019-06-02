@@ -15,7 +15,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project core-outrider-242306
   - gcloud config set compute/zone us-west1-b	
-  - gcloud container cluster get-credentials multi-cluster
+  - gcloud container clusters get-credentials multi-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t wynetech/react-test -f ./client/Dockerfile.dev ./client
 
